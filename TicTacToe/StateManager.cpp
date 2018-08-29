@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "StateMachine.h"
+#include "StateManager.h"
 
 /**
 * StateMachine::addState
