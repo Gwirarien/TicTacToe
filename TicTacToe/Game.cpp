@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Game.h"
+#include "SplashState.h"
 
 /**
 * Game::Game
@@ -8,13 +9,14 @@
 * @param int screenHeight
 * @param std::string title
 */
-Game::Game(int screenWidth, int screenHeight, std::string title)
+Game::Game(int screenWidth, int screenHeight, const std::string title)
 {
 	//Creating the render window; sf::Style::Close, sf::Style::Titlebar means that 
 	//the window will contain a close button and a title bar
 	_data->window.create(sf::VideoMode(screenWidth, screenHeight), title, sf::Style::Close | sf::Style::Titlebar);
-	//First state that the game shows
-	//
+	//Load the initial state 
+	_data->machine.addState(StateReference(new SplashState(this->_data)));
+
 	this->run();
 }
 

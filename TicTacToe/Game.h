@@ -1,7 +1,9 @@
 #pragma once
+
 #include <memory>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "Definitions.h"
 #include "AssetManager.h"
 #include "InputManager.h"
 #include "StateManager.h"
@@ -19,7 +21,7 @@ typedef std::shared_ptr<GameData> GameDataRef;
 class Game
 {
 public:
-	Game(int screenWidth, int screenHeight, std::string title);
+	Game(int screenWidth, int screenHeight, const std::string title);
 
 private:
 	const double deltaTime = 1.0 / 60.0; //60 fps
