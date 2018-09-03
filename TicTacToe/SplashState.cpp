@@ -31,9 +31,9 @@ void SplashState::inputHandler()
 {
 	sf::Event event;
 	
+	//Handle the "close" event
 	while (this->_data->window.pollEvent(event))
 	{
-		//Handle the "close" event
 		if (sf::Event::Closed == event.type)
 		{
 			this->_data->window.close();
@@ -44,22 +44,19 @@ void SplashState::inputHandler()
 /**
 * SplashState::update
 * Updates the splash when it's changed
-* @param double deltaFrames
 * #return void
 */
 void SplashState::update(double deltaFrames)
 {
 	if (this->_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME)
 	{
-		//Main switch
-		this->_data->machine.addState(StateReference(new MainMenuState(_data)), true);
+		printf("Go to main menu\n");
 	}
 }
 
 /**
 * SplashState::draw
 * Handles the drawings of the objects
-* @param double deltaFrames
 * #return void
 */
 void SplashState::draw(double deltaFrames)
