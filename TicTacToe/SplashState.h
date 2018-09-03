@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "State.h"
+#include "MainMenuState.h"
 #include "Game.h"
 
 class SplashState : public State
