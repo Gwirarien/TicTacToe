@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "AssetManager.h"
 
-
 /**
 * AssetManager::loadTexture
 * Loads the texture
@@ -19,7 +18,7 @@ void AssetManager::loadTexture(const std::string name, const std::string fileNam
 }
 
 /**
-* AssetManager::loadTexture
+* AssetManager::getTexture
 * Returns the texture
 * @param std::string name
 * #return sf::Texture
@@ -46,7 +45,7 @@ void AssetManager::loadFont(const std::string name, const std::string fileName)
 }
 
 /**
-* AssetManager::loadFont
+* AssetManager::getFont
 * Returns the font
 * @param std::string name
 * #return sf::Font
