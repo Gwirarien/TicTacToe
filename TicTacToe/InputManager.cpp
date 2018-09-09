@@ -13,7 +13,8 @@ bool InputManager::isSpriteClicked(sf::Sprite object, sf::Mouse::Button button, 
 {
 	if(sf::Mouse::isButtonPressed(button))
 	{
-		sf::IntRect tempRectPlayButton(object.getPosition().x, object.getPosition().y, object.getGlobalBounds().width, object.getGlobalBounds().height);
+		//Casting to int to avoid warning of data loss
+		sf::IntRect tempRectPlayButton((int)object.getPosition().x, (int)object.getPosition().y, (int)object.getGlobalBounds().width, (int)object.getGlobalBounds().height);
 
 		if (tempRectPlayButton.contains(sf::Mouse::getPosition(window))) 
 		{

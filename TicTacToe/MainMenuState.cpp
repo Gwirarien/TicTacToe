@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MainMenuState.h"
+#include "GameState.h"
 
 /**
 * MainMenuState::MainMenuState
@@ -61,7 +62,7 @@ void MainMenuState::inputHandler()
 		//Handle the "play" event
 		if (this->_data->input.isSpriteClicked(this->_playButton, sf::Mouse::Left, this->_data->window))
 		{
-			printf("Go to Game Screen\n");
+			this->_data->machine.addState(StateReference(new GameState(_data)), true);
 		}
 	}
 }
