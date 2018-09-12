@@ -20,6 +20,6 @@ private:
 	sf::Sprite _resumeButton;
 	sf::Sprite _homeButton;
 
-	std::vector<std::string> _textureNames = {"ResumeButton", "HomeButton", "PauseBackground"};
-	std::vector<std::string> _texturePaths = {RESUME_BUTTON, HOME_BUTTON, PAUSE_BACKGROUND_FILEPATH};
+	std::vector<std::string> _textureNames = {"PauseBackground", "ResumeButton", "HomeButton"};
+	std::vector<std::string> _texturePaths = {PAUSE_BACKGROUND_FILEPATH, RESUME_BUTTON, HOME_BUTTON};
 };

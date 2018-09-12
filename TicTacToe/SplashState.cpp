@@ -65,7 +65,7 @@ void SplashState::update(double deltaFrames)
 void SplashState::draw(double deltaFrames)
 {
 	//Clear the screen
-	this->_data->window.clear();
+	this->_data->window.clear(sf::Color::Red);
 	//Set the background
 	this->_data->window.draw(this->_background);
 	//Display the changes

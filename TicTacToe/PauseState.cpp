@@ -22,6 +22,13 @@ void PauseState::initializeState()
 	{
 		this->_data->assets.loadTexture(_textureNames[i], _texturePaths[i]);
 
+		if (_textureNames[i] == "PauseBackground")
+		{
+			//Set the texture
+			_background.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			continue;
+		}
+
 		//Position the buttons
 		if (_textureNames[i] == "ResumeButton")
 		{
@@ -40,13 +47,6 @@ void PauseState::initializeState()
 			//Position the button
 			this->_homeButton.setPosition((this->_data->window.getSize().x / 2) - (this->_homeButton.getLocalBounds().width / 2),
 				(this->_data->window.getSize().y / 3 * 2) - (this->_homeButton.getLocalBounds().height / 2));
-			continue;
-		}
-
-		if (_textureNames[i] == "PauseBackground")
-		{
-			//Set the texture
-			_background.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			continue;
 		}
 	}
@@ -105,9 +105,9 @@ void PauseState::draw(double deltaFrames)
 	//Clear the screen
 	this->_data->window.clear(sf::Color::Red);
 	//Set the background and buttons
+	this->_data->window.draw(this->_background);
 	this->_data->window.draw(this->_resumeButton);
 	this->_data->window.draw(this->_homeButton);
-	this->_data->window.draw(this->_background);
 	//Display the changes
 	this->_data->window.display();
 }

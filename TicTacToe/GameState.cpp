@@ -24,7 +24,7 @@ void GameState::initializeState()
 	_turn = PLAYER_PIECE;
 
 	this->_data->assets.loadTexture("PauseButton", GAME_PAUSE_BUTTON);
-	_background.setTexture(this->_data->assets.getTexture("Background"));
+	_background.setTexture(this->_data->assets.getTexture("MainMenuBackground"));
 	_pauseButton.setTexture(this->_data->assets.getTexture("PauseButton"));
 
 	//Position the pause button
@@ -78,8 +78,8 @@ void GameState::draw(double deltaFrames)
 	//Clear the screen
 	this->_data->window.clear(sf::Color::Red);
 	//Set the background and button
-	this->_data->window.draw(this->_pauseButton);
 	this->_data->window.draw(this->_background);
+	this->_data->window.draw(this->_pauseButton);
 	//Display the changes
 	this->_data->window.display();
 }

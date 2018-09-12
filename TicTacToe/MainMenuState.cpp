@@ -23,6 +23,13 @@ void MainMenuState::initializeState()
 	{
 		this->_data->assets.loadTexture(_textureNames[i], _texturePaths[i]);
 
+		if (_textureNames[i] == "MainMenuBackground")
+		{
+			//Set the texture
+			_background.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			continue;
+		}
+
 		if (_textureNames[i] == "GameTitle")
 		{
 			//Set the texture
@@ -47,13 +54,6 @@ void MainMenuState::initializeState()
 			_playButtonOuter.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			//Position the button
 			this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getGlobalBounds().width / 2), this->_playButtonOuter.getGlobalBounds().height / 2);
-			continue;
-		}
-
-		if (_textureNames[i] == "Background")
-		{
-			//Set the texture
-			//_background.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			continue;
 		}
 	}
@@ -105,10 +105,10 @@ void MainMenuState::draw(double deltaFrames)
 	//Clear the screen
 	this->_data->window.clear();
 	//Set the background, title and buttons
+	this->_data->window.draw(this->_background);
 	this->_data->window.draw(this->_title);
 	this->_data->window.draw(this->_playButton);
 	this->_data->window.draw(this->_playButtonOuter);
-	this->_data->window.draw(this->_background);
 	//Display the changes
 	this->_data->window.display();
 }
