@@ -21,6 +21,6 @@ private:
 	sf::Sprite _playButtonOuter;
 	sf::Sprite _title;
 
-	std::vector<std::string> _backgroundNames = {"GameTitle", "PlayButton", "PlayButtonOuter", "Background"};
-	std::vector<std::string> _backgroundPaths = {MAIN_MENU_TITLE_PATH, MAIN_MENU_PLAY_BUTTON, MAIN_MENU_PLAY_BUTTON_OUTER, MAIN_MENU_BACKGROUND_FILEPATH};
+	std::vector<std::string> _textureNames = {"GameTitle", "PlayButton", "PlayButtonOuter", "Background"};
+	std::vector<std::string> _texturePaths = {MAIN_MENU_TITLE_PATH, MAIN_MENU_PLAY_BUTTON, MAIN_MENU_PLAY_BUTTON_OUTER, MAIN_MENU_BACKGROUND_FILEPATH};
 };

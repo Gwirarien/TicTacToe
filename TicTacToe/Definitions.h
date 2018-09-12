@@ -20,7 +20,7 @@
 #define MAIN_MENU_BACKGROUND_FILEPATH "resources/res/MainMenuBackground.png"
 
 //Game state defines
-#define GAME_PAUSE_BUTTON "reosurces/res/PauseButton.png"
+#define GAME_PAUSE_BUTTON "resources/res/PauseButton.png"
 #define GAME_BACKGROUND_FILEPATH "resources/res/GameBackground.png"
 
 #define X_PIECE_FILEPATH "resources/res/X.png" 
@@ -43,6 +43,9 @@
 #define STATE_DRAW 106
 
 //Pause state defines
-#define HOME_BUTTON "reosurces/res/HomeButton.png"
-#define RESUME_BUTTON "reosurces/res/ResumeButton.png"
+#define HOME_BUTTON "resources/res/HomeButton.png"
+#define RESUME_BUTTON "resources/res/ResumeButton.png"
 #define PAUSE_BACKGROUND_FILEPATH "resources/res/MainMenuBackground.png"
+
+//Game over defines 
+#define RETRY_BUTTON "resources/res/RetryButton.png"

@@ -1,41 +1,35 @@
 #include "stdafx.h"
-#include "PauseState.h"
+#include "GameOverState.h"
+#include "GameState.h"
 
 /**
-* PauseState::PauseState
+* GameOverState::GameOverState
 * Constructor
 * @param GameDataRef dataRef
 */
-PauseState::PauseState(GameDataRef dataRef)
+GameOverState::GameOverState(GameDataRef dataRef)
 	:_data(dataRef)
 {
 }
 
 /**
-* PauseState::initializeState
+* GameOverState::initializeState
 * Initializes the splash state with the texture
 * #return void
 */
-void PauseState::initializeState()
+void GameOverState::initializeState()
 {
 	for (int i = 0; ISGREATER(i, _textureNames.size(), EPSILON); i++)
 	{
 		this->_data->assets.loadTexture(_textureNames[i], _texturePaths[i]);
 
-		if (_textureNames[i] == "PauseBackground")
+		if (_textureNames[i] == "RetryButton")
 		{
 			//Set the texture
-			_background.setTexture(this->_data->assets.getTexture(_textureNames[i]));
-		}
-
-		//Position the buttons
-		if (_textureNames[i] == "ResumeButton")
-		{
-			//Set the texture
-			_resumeButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			_retryButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			//Position the button
-			this->_resumeButton.setPosition((this->_data->window.getSize().x / 2) - (this->_resumeButton.getLocalBounds().width / 2),
-				(this->_data->window.getSize().y / 3) - (this->_resumeButton.getLocalBounds().height / 2));
+			this->_retryButton.setPosition((this->_data->window.getSize().x / 2) - (this->_retryButton.getLocalBounds().width / 2),
+				(this->_data->window.getSize().y / 3) - (this->_retryButton.getLocalBounds().height / 2));
 		}
 
 		if (_textureNames[i] == "HomeButton")
@@ -50,11 +44,11 @@ void PauseState::initializeState()
 }
 
 /**
-* PauseState::inputHandler
+* GameOverState::inputHandler
 * Handles the input
 * #return void
 */
-void PauseState::inputHandler()
+void GameOverState::inputHandler()
 {
 	sf::Event event;
 
@@ -66,10 +60,10 @@ void PauseState::inputHandler()
 			this->_data->window.close();
 		}
 
-		//Handle the "resume" event
-		if (this->_data->input.isSpriteClicked(this->_resumeButton, sf::Mouse::Left, this->_data->window))
+		//Handle the "retry" event
+		if (this->_data->input.isSpriteClicked(this->_retryButton, sf::Mouse::Left, this->_data->window))
 		{
-			this->_data->machine.removeState();
+			this->_data->machine.addState(StateReference(new GameState(_data)), true);
 		}
 
 		//Handle the "home" event
@@ -82,29 +76,28 @@ void PauseState::inputHandler()
 }
 
 /**
-* PauseState::update
+* GameOverState::update
 * Updates the splash when it's changed
 * @param double deltaFrames
 * #return void
 */
-void PauseState::update(double deltaFrames)
+void GameOverState::update(double deltaFrames)
 {
 }
 
 /**
-* PauseState::draw
+* GameOverState::draw
 * Handles the drawings of the objects
 * @param double deltaFrames
 * #return void
 */
-void PauseState::draw(double deltaFrames)
+void GameOverState::draw(double deltaFrames)
 {
 	//Clear the screen
-	this->_data->window.clear(sf::Color::Red);
-	//Set the background and buttons
-	this->_data->window.draw(this->_resumeButton);
+	this->_data->window.clear(sf::Color::Blue);
+	//Set the buttons
+	this->_data->window.draw(this->_retryButton);
 	this->_data->window.draw(this->_homeButton);
-	this->_data->window.draw(this->_background);
 	//Display the changes
 	this->_data->window.display();
 }

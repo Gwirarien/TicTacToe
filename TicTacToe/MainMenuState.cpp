@@ -19,24 +19,37 @@ MainMenuState::MainMenuState(GameDataRef dataRef)
 */
 void MainMenuState::initializeState()
 {
-	for (int i = 0; ISGREATER(i, _backgroundNames.size(), EPSILON); i++)
+	for (int i = 0; ISGREATER(i, _textureNames.size(), EPSILON); i++)
 	{
-		this->_data->assets.loadTexture(_backgroundNames[i], _backgroundPaths[i]);
-		_background.setTexture(this->_data->assets.getTexture(_backgroundNames[i]));
-		
-		//Position the background items
-		if (_backgroundNames[i] == "PlayButton")
+		this->_data->assets.loadTexture(_textureNames[i], _texturePaths[i]);
+
+		if (_textureNames[i] == "Background")
 		{
+			//Set the texture
+			_background.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+		}
+
+		if (_textureNames[i] == "PlayButton")
+		{
+			//Set the texture
+			_playButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			//Position the button
 			this->_playButton.setPosition((SCREEN_WIDTH / 2) - (this->_playButton.getGlobalBounds().width / 2), this->_playButton.getGlobalBounds().height / 2);
 		}
 
-		if (_backgroundNames[i] == "PlayButtonOuter")
+		if (_textureNames[i] == "PlayButtonOuter")
 		{
+			//Set the texture
+			_playButtonOuter.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			//Position the button
 			this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getGlobalBounds().width / 2), this->_playButtonOuter.getGlobalBounds().height / 2);
 		}
 
-		if (_backgroundNames[i] == "GameTitle")
+		if (_textureNames[i] == "GameTitle")
 		{
+			//Set the texture
+			_title.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			//Position the button
 			this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getGlobalBounds().width / 2), this->_title.getGlobalBounds().height * 0.1);
 		}
 	}

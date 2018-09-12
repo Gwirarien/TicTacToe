@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameState.h"
 #include "PauseState.h"
+#include "GameOverState.h"
 
 /**
 * GameState::GameState
@@ -50,7 +51,8 @@ void GameState::inputHandler()
 		//Handle the "pause" event
 		if (this->_data->input.isSpriteClicked(this->_pauseButton, sf::Mouse::Left, this->_data->window))
 		{
-			this->_data->machine.addState(StateReference(new PauseState(_data)), false);
+			//this->_data->machine.addState(StateReference(new PauseState(_data)), false);
+			this->_data->machine.addState(StateReference(new GameOverState(_data)), true);
 		}
 	}
 }

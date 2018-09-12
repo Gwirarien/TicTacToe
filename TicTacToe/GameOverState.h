@@ -4,10 +4,10 @@
 #include "MainMenuState.h"
 #include "Game.h"
 
-class PauseState : public State
+class GameOverState : public State
 {
 public:
-	PauseState(GameDataRef dataRef);
+	GameOverState(GameDataRef dataRef);
 
 	virtual void initializeState() override;
 	virtual void inputHandler() override;
@@ -16,10 +16,10 @@ public:
 
 private:
 	GameDataRef _data;
-	sf::Sprite _background;
-	sf::Sprite _resumeButton;
 	sf::Sprite _homeButton;
+	sf::Sprite _retryButton;
 
-	std::vector<std::string> _textureNames = {"ResumeButton", "HomeButton", "PauseBackground"};
-	std::vector<std::string> _texturePaths = {RESUME_BUTTON, HOME_BUTTON, PAUSE_BACKGROUND_FILEPATH};
+	std::vector<std::string> _textureNames = {"RetryButton", "HomeButton"};
+	std::vector<std::string> _texturePaths = {RETRY_BUTTON, HOME_BUTTON};
 };
+
