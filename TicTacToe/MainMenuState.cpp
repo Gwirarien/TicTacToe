@@ -19,14 +19,17 @@ MainMenuState::MainMenuState(GameDataRef dataRef)
 */
 void MainMenuState::initializeState()
 {
-	for (int i = 0; ISGREATER(i, _textureNames.size(), EPSILON); i++)
+	for (int i = 0; i < _textureNames.size(); i++)
 	{
 		this->_data->assets.loadTexture(_textureNames[i], _texturePaths[i]);
 
-		if (_textureNames[i] == "Background")
+		if (_textureNames[i] == "GameTitle")
 		{
 			//Set the texture
-			_background.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			_title.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			//Position the button
+			this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getGlobalBounds().width / 2), this->_title.getGlobalBounds().height * 0.1);
+			continue;
 		}
 
 		if (_textureNames[i] == "PlayButton")
@@ -35,6 +38,7 @@ void MainMenuState::initializeState()
 			_playButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			//Position the button
 			this->_playButton.setPosition((SCREEN_WIDTH / 2) - (this->_playButton.getGlobalBounds().width / 2), this->_playButton.getGlobalBounds().height / 2);
+			continue;
 		}
 
 		if (_textureNames[i] == "PlayButtonOuter")
@@ -43,14 +47,14 @@ void MainMenuState::initializeState()
 			_playButtonOuter.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			//Position the button
 			this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getGlobalBounds().width / 2), this->_playButtonOuter.getGlobalBounds().height / 2);
+			continue;
 		}
 
-		if (_textureNames[i] == "GameTitle")
+		if (_textureNames[i] == "Background")
 		{
 			//Set the texture
-			_title.setTexture(this->_data->assets.getTexture(_textureNames[i]));
-			//Position the button
-			this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getGlobalBounds().width / 2), this->_title.getGlobalBounds().height * 0.1);
+			//_background.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			continue;
 		}
 	}
 }
@@ -99,7 +103,7 @@ void MainMenuState::update(double deltaFrames)
 void MainMenuState::draw(double deltaFrames)
 {
 	//Clear the screen
-	this->_data->window.clear(sf::Color::Red);
+	this->_data->window.clear();
 	//Set the background, title and buttons
 	this->_data->window.draw(this->_title);
 	this->_data->window.draw(this->_playButton);

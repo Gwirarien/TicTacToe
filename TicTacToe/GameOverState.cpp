@@ -19,7 +19,7 @@ GameOverState::GameOverState(GameDataRef dataRef)
 */
 void GameOverState::initializeState()
 {
-	for (int i = 0; ISGREATER(i, _textureNames.size(), EPSILON); i++)
+	for (int i = 0; i < _textureNames.size(); i++)
 	{
 		this->_data->assets.loadTexture(_textureNames[i], _texturePaths[i]);
 
@@ -30,6 +30,7 @@ void GameOverState::initializeState()
 			//Position the button
 			this->_retryButton.setPosition((this->_data->window.getSize().x / 2) - (this->_retryButton.getLocalBounds().width / 2),
 				(this->_data->window.getSize().y / 3) - (this->_retryButton.getLocalBounds().height / 2));
+			continue;
 		}
 
 		if (_textureNames[i] == "HomeButton")
@@ -39,6 +40,7 @@ void GameOverState::initializeState()
 			//Position the button
 			this->_homeButton.setPosition((this->_data->window.getSize().x / 2) - (this->_homeButton.getLocalBounds().width / 2),
 				(this->_data->window.getSize().y / 3 * 2) - (this->_homeButton.getLocalBounds().height / 2));
+			continue;
 		}
 	}
 }

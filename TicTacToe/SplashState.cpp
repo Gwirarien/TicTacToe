@@ -18,8 +18,8 @@ SplashState::SplashState(GameDataRef dataRef)
 */
 void SplashState::initializeState()
 {
-	this->_data->assets.loadTexture("Backround", SPLASH_SCREEN_BACKGROUND_FILEPATH);
-	_background.setTexture(this->_data->assets.getTexture("Backround"));
+	this->_data->assets.loadTexture("SplashBackground", SPLASH_SCREEN_BACKGROUND_FILEPATH);
+	_background.setTexture(this->_data->assets.getTexture("SplashBackground"));
 }
 
 /**
@@ -65,7 +65,7 @@ void SplashState::update(double deltaFrames)
 void SplashState::draw(double deltaFrames)
 {
 	//Clear the screen
-	this->_data->window.clear(sf::Color::Red);
+	this->_data->window.clear();
 	//Set the background
 	this->_data->window.draw(this->_background);
 	//Display the changes
