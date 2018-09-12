@@ -1,7 +1,7 @@
 #pragma once
 
-#define SCREEN_WIDTH 680
-#define SCREEN_HEIGHT 1080
+#define SCREEN_WIDTH 480
+#define SCREEN_HEIGHT 720
 
 #define EPSILON 0.00000001
 #define ISLESS(a, b, tolerance) ((a - b) < tolerance)
@@ -20,8 +20,8 @@
 #define MAIN_MENU_BACKGROUND_FILEPATH "resources/res/MainMenuBackground.png"
 
 //Game state defines
-#define GAME_BACKGROUND_FILEPATH "resources/res/GameBackground.png"
 #define GAME_PAUSE_BUTTON "reosurces/res/PauseButton.png"
+#define GAME_BACKGROUND_FILEPATH "resources/res/GameBackground.png"
 
 #define X_PIECE_FILEPATH "resources/res/X.png" 
 #define O_PIECE_FILEPATH "resources/res/O.png"
@@ -41,3 +41,8 @@
 #define STATE_PLACING_PIECE 104
 #define STATE_AI_PLAYING 105
 #define STATE_DRAW 106
+
+//Pause state defines
+#define HOME_BUTTON "reosurces/res/HomeButton.png"
+#define RESUME_BUTTON "reosurces/res/ResumeButton.png"
+#define PAUSE_BACKGROUND_FILEPATH "resources/res/MainMenuBackground.png"
