@@ -30,21 +30,13 @@ void MainMenuState::initializeState()
 			continue;
 		}
 
-		if (_textureNames[i] == "GameTitle")
-		{
-			//Set the texture
-			_title.setTexture(this->_data->assets.getTexture(_textureNames[i]));
-			//Position the button
-			this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getGlobalBounds().width / 2), this->_title.getGlobalBounds().height * 0.1);
-			continue;
-		}
-
 		if (_textureNames[i] == "PlayButton")
 		{
 			//Set the texture
 			_playButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			//Position the button
-			this->_playButton.setPosition((SCREEN_WIDTH / 2) - (this->_playButton.getGlobalBounds().width / 2), this->_playButton.getGlobalBounds().height / 2);
+			this->_playButton.setPosition((SCREEN_WIDTH / 2) - (this->_playButton.getLocalBounds().width / 2), 
+				(SCREEN_HEIGHT / 2) - this->_playButton.getLocalBounds().height / 2);
 			continue;
 		}
 
@@ -53,7 +45,18 @@ void MainMenuState::initializeState()
 			//Set the texture
 			_playButtonOuter.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			//Position the button
-			this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getGlobalBounds().width / 2), this->_playButtonOuter.getGlobalBounds().height / 2);
+			this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getLocalBounds().width / 2),
+				(SCREEN_HEIGHT / 2) - this->_playButtonOuter.getLocalBounds().height / 3);
+			continue;
+		}
+
+		if (_textureNames[i] == "GameTitle")
+		{
+			//Set the texture
+			_title.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			//Position the button
+			this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getLocalBounds().width / 2),
+				this->_title.getLocalBounds().height * 0.1);
 			continue;
 		}
 	}
@@ -106,9 +109,9 @@ void MainMenuState::draw(double deltaFrames)
 	this->_data->window.clear();
 	//Set the background, title and buttons
 	this->_data->window.draw(this->_background);
-	this->_data->window.draw(this->_title);
 	this->_data->window.draw(this->_playButton);
 	this->_data->window.draw(this->_playButtonOuter);
+	this->_data->window.draw(this->_title);
 	//Display the changes
 	this->_data->window.display();
 }
