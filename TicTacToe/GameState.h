@@ -15,9 +15,17 @@ public:
 	virtual void draw(double deltaFrames) override;
 
 private:
+	void initializeGridPieces();
+
 	GameDataRef _data;
 	sf::Sprite _background;
 	sf::Sprite _pauseButton;
+	sf::Sprite _gridSprite;
+	sf::Sprite _gridPieces[3][3];
+	int gridArray[3][3];
 	int _turn;
 	int _gameState;
+
+	std::vector<std::string> _textureNames = {"PauseButton", "XPiece", "OPiece", "GridSprite"};
+	std::vector<std::string> _texturePaths = {GAME_PAUSE_BUTTON, X_PIECE_FILEPATH, O_PIECE_FILEPATH, GRID_SPRITE_FILEPATH};
 };

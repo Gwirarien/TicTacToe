@@ -23,12 +23,44 @@ void GameState::initializeState()
 	_gameState = STATE_PLAYING;
 	_turn = PLAYER_PIECE;
 
-	this->_data->assets.loadTexture("PauseButton", GAME_PAUSE_BUTTON);
 	_background.setTexture(this->_data->assets.getTexture("MainMenuBackground"));
-	_pauseButton.setTexture(this->_data->assets.getTexture("PauseButton"));
 
-	//Position the pause button
-	_pauseButton.setPosition(this->_data->window.getSize().x - _pauseButton.getLocalBounds().width, _pauseButton.getPosition().y);
+	int nSize = _textureNames.size();
+	for (int i = 0; i < nSize; i++)
+	{
+		this->_data->assets.loadTexture(_textureNames[i], _texturePaths[i]);
+
+		if (_textureNames[i] == "PauseButton")
+		{
+			//Set the texture
+			_pauseButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			//Position the button
+			_pauseButton.setPosition(this->_data->window.getSize().x - _pauseButton.getGlobalBounds().width,
+				_pauseButton.getPosition().y);
+			continue;
+		}
+
+		if (_textureNames[i] == "GridSprite")
+		{
+			//Set the texture
+			_gridSprite.setTexture(this->_data->assets.getTexture(_textureNames[i]));
+			//Position the button
+			_gridSprite.setPosition((SCREEN_WIDTH / 2) - (_gridSprite.getGlobalBounds().width / 2), 
+				(SCREEN_HEIGHT / 2) - (_gridSprite.getGlobalBounds().height / 2));
+			continue;
+		}
+
+		initializeGridPieces();
+
+		//Reset grid values
+ 		for (int x = 0; x < 3; x++)
+		{
+			for (int y = 0; y < 3; y++) 
+			{
+				gridArray[x][y] = EMPTY_PIECE;
+			}
+		}
+	}
 }
 
 /**
@@ -51,7 +83,6 @@ void GameState::inputHandler()
 		//Handle the "pause" event
 		if (this->_data->input.isSpriteClicked(this->_pauseButton, sf::Mouse::Left, this->_data->window))
 		{
-			//this->_data->machine.addState(StateReference(new PauseState(_data)), false);
 			this->_data->machine.addState(StateReference(new GameOverState(_data)), true);
 		}
 	}
@@ -68,6 +99,27 @@ void GameState::update(double deltaFrames)
 }
 
 /**
+* GameState::initializeGridPieces
+* Initializes the pieces of the grid
+* #return void
+*/
+void GameState::initializeGridPieces()
+{
+	sf::Vector2u tempSpriteSize = this->_data->assets.getTexture("XPiece").getSize();
+
+	for (int x = 0; x < 3; x++)
+	{
+		for (int y = 0; y < 3; y++)
+		{
+			_gridPieces[x][y].setTexture(this->_data->assets.getTexture("XPiece"));
+			_gridPieces[x][y].setPosition(_gridSprite.getPosition().x + (tempSpriteSize.x * x) - 7,
+				_gridSprite.getPosition().y + (tempSpriteSize.y * y) - 7);
+			_gridPieces[x][y].setColor(sf::Color(255, 255, 255, 255));
+		}
+	}
+}
+
+/**
 * GameState::draw
 * Handles the drawings of the objects
 * @param double deltaFrames
@@ -80,6 +132,17 @@ void GameState::draw(double deltaFrames)
 	//Set the background and button
 	this->_data->window.draw(this->_background);
 	this->_data->window.draw(this->_pauseButton);
+	this->_data->window.draw(this->_gridSprite);
+
+	for (int x = 0; x < 3; x++)
+	{
+		for (int y = 0; y < 3; y++)
+		{
+			this->_data->window.draw(this->_gridPieces[x][y]);
+		}
+	}
+
 	//Display the changes
 	this->_data->window.display();
 }
+

@@ -30,7 +30,6 @@ void PauseState::initializeState()
 			continue;
 		}
 
-		//Position the buttons
 		if (_textureNames[i] == "ResumeButton")
 		{
 			//Set the texture

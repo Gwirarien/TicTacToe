@@ -1,7 +1,7 @@
 #pragma once
 
-#define SCREEN_WIDTH 480
-#define SCREEN_HEIGHT 720
+#define SCREEN_WIDTH 768
+#define SCREEN_HEIGHT 1136
 
 #define EPSILON 0.00000001
 #define ISLESS(a, b, tolerance) ((a - b) < tolerance)
@@ -49,3 +49,6 @@
 
 //Game over defines 
 #define RETRY_BUTTON "resources/res/RetryButton.png"
+
+//Grid defines
+#define GRID_SPRITE_FILEPATH "resources/res/Grid.png"
