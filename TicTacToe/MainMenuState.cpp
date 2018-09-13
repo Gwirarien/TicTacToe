@@ -19,7 +19,8 @@ MainMenuState::MainMenuState(GameDataRef dataRef)
 */
 void MainMenuState::initializeState()
 {
-	for (int i = 0; i < _textureNames.size(); i++)
+	int nSize = _textureNames.size();
+	for (int i = 0; i < nSize; i++)
 	{
 		this->_data->assets.loadTexture(_textureNames[i], _texturePaths[i]);
 
@@ -56,7 +57,7 @@ void MainMenuState::initializeState()
 			_title.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			//Position the button
 			this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getLocalBounds().width / 2),
-				this->_title.getLocalBounds().height * 0.1);
+				this->_title.getLocalBounds().height * 0.1f);
 			continue;
 		}
 	}

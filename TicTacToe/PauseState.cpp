@@ -18,7 +18,8 @@ PauseState::PauseState(GameDataRef dataRef)
 */
 void PauseState::initializeState()
 {
-	for (int i = 0; i < _textureNames.size(); i++)
+	int nSize = _textureNames.size();
+	for (int i = 0; i < nSize; i++)
 	{
 		this->_data->assets.loadTexture(_textureNames[i], _texturePaths[i]);
 
