@@ -11,7 +11,7 @@
 void StateMachine::addState(StateReference newState, bool isReplacing)
 {
 	this->_isAdding = true;
-	this->_isReplacing = true;
+	this->_isReplacing = isReplacing;
 	this->_newState = std::move(newState);
 }
 
@@ -78,7 +78,7 @@ void StateMachine::processStateChanges()
 * StateMachine::processStateChanges
 * Handle the get active state method
 * @param none
-* #return void
+* #return StateReference
 */
 StateReference &StateMachine::getActiveState()
 {

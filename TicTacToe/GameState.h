@@ -22,7 +22,7 @@ private:
 	sf::Sprite _pauseButton;
 	sf::Sprite _gridSprite;
 	sf::Sprite _gridPieces[3][3];
-	int gridArray[3][3];
+	int _gridArray[3][3];
 	int _turn;
 	int _gameState;
 

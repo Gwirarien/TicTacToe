@@ -45,20 +45,19 @@ void GameState::initializeState()
 			//Set the texture
 			_gridSprite.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			//Position the button
-			_gridSprite.setPosition((SCREEN_WIDTH / 2) - (_gridSprite.getGlobalBounds().width / 2), 
+			_gridSprite.setPosition((SCREEN_WIDTH / 2) - (_gridSprite.getGlobalBounds().width / 2),
 				(SCREEN_HEIGHT / 2) - (_gridSprite.getGlobalBounds().height / 2));
 			continue;
 		}
-
+	}
 		initializeGridPieces();
 
-		//Reset grid values
- 		for (int x = 0; x < 3; x++)
+	//Reset grid values
+	for (int x = 0; x < 3; x++)
+	{
+		for (int y = 0; y < 3; y++)
 		{
-			for (int y = 0; y < 3; y++) 
-			{
-				gridArray[x][y] = EMPTY_PIECE;
-			}
+			_gridArray[x][y] = EMPTY_PIECE;
 		}
 	}
 }
@@ -83,7 +82,7 @@ void GameState::inputHandler()
 		//Handle the "pause" event
 		if (this->_data->input.isSpriteClicked(this->_pauseButton, sf::Mouse::Left, this->_data->window))
 		{
-			this->_data->machine.addState(StateReference(new GameOverState(_data)), true);
+			this->_data->machine.addState(StateReference(new PauseState(_data)), false);
 		}
 	}
 }
@@ -145,4 +144,3 @@ void GameState::draw(double deltaFrames)
 	//Display the changes
 	this->_data->window.display();
 }
-

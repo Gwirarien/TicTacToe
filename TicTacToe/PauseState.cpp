@@ -72,6 +72,7 @@ void PauseState::inputHandler()
 		//Handle the "resume" event
 		if (this->_data->input.isSpriteClicked(this->_resumeButton, sf::Mouse::Left, this->_data->window))
 		{
+			//Resume the game by popping the current state
 			this->_data->machine.removeState();
 		}
 
@@ -79,6 +80,7 @@ void PauseState::inputHandler()
 		if (this->_data->input.isSpriteClicked(this->_homeButton, sf::Mouse::Left, this->_data->window))
 		{
 			this->_data->machine.removeState();
+			//Switch to game state
 			this->_data->machine.addState(StateReference(new MainMenuState(_data)), true);
 		}
 	}
