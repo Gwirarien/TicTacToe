@@ -16,6 +16,7 @@ public:
 
 private:
 	void initializeGridPieces();
+	void checkAndPlacePiece();
 
 	GameDataRef _data;
 	sf::Sprite _background;

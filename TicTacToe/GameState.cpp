@@ -84,6 +84,12 @@ void GameState::inputHandler()
 		{
 			this->_data->machine.addState(StateReference(new PauseState(_data)), false);
 		}
+
+		//Handle the "clicked sprite" event
+		else if (this->_data->input.isSpriteClicked(this->_gridSprite, sf::Mouse::Left, this->_data->window))
+		{
+			this->checkAndPlacePiece();
+		}
 	}
 }
 
@@ -113,8 +119,76 @@ void GameState::initializeGridPieces()
 			_gridPieces[x][y].setTexture(this->_data->assets.getTexture("XPiece"));
 			_gridPieces[x][y].setPosition(_gridSprite.getPosition().x + (tempSpriteSize.x * x) - 7,
 				_gridSprite.getPosition().y + (tempSpriteSize.y * y) - 7);
-			_gridPieces[x][y].setColor(sf::Color(255, 255, 255, 255));
+			_gridPieces[x][y].setColor(sf::Color(255, 255, 255, 0));
 		}
+	}
+}
+
+/**
+* GameState::checkAndPlacePiece
+* Checks and places the pieces on the grid
+* #return void
+*/
+void GameState::checkAndPlacePiece()
+{
+	sf::Vector2i touchPoint = this->_data->input.getMousePosition(this->_data->window);
+	sf::FloatRect gridSize = _gridSprite.getGlobalBounds();
+	sf::Vector2f gapOutsideOfGrid = sf::Vector2f((SCREEN_WIDTH - gridSize.width) / 2, (SCREEN_HEIGHT - gridSize.height) / 2);
+	sf::Vector2f gridSectionSize = sf::Vector2f(gridSize.width / 3, gridSize.height / 3);
+
+	//Relative position
+	sf::Vector2f gridLocalTouchPosition = sf::Vector2f(touchPoint.x - gapOutsideOfGrid.x, touchPoint.y - gapOutsideOfGrid.y);
+
+	int column = 0;
+	//If it's within the first column
+	if (gridLocalTouchPosition.x < gridSectionSize.x) 
+	{
+		column = 1;
+	}
+	//If it's less than 2/3 => it's within the second column
+	else if (gridLocalTouchPosition.x < gridSectionSize.x * 2)
+	{
+		column = 2;
+	} 	
+	else if (gridLocalTouchPosition.x < gridSize.width * 2)
+	{
+		column = 3;
+	}
+
+	int row = 0;
+	//If it's within the first column
+	if (gridLocalTouchPosition.y < gridSectionSize.y)
+	{
+		row = 1;
+	}
+	//If it's less than 2/3 => it's within the second column
+	else if (gridLocalTouchPosition.y < gridSectionSize.y * 2)
+	{
+		row = 2;
+	}
+	else if (gridLocalTouchPosition.y < gridSize.height * 2)
+	{
+		row = 3;
+	}
+
+	//Check if it's an empty space
+	if (_gridArray[column - 1][row - 1] == EMPTY_PIECE)
+	{
+		_gridArray[column - 1][row - 1] = _turn;
+		//If it's the player's turn, load the X's texture
+		if (PLAYER_PIECE == _turn)
+		{
+			_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.getTexture("XPiece"));
+			_turn = AI_PIECE;
+		}
+		//If it's the AI's turn, load the O's texture
+		else if (AI_PIECE == _turn)
+		{
+			_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.getTexture("OPiece"));
+			_turn = PLAYER_PIECE;
+		}
+		//Show/Make it visible again
+		_gridPieces[column - 1][row - 1].setColor(sf::Color(255, 255, 255, 255));
 	}
 }
 
