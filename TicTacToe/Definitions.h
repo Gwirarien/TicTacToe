@@ -26,7 +26,7 @@
 #define X_PIECE_FILEPATH "resources/res/X.png" 
 #define O_PIECE_FILEPATH "resources/res/O.png"
 #define X_PIECE_WINNING_FILEPATH "resources/res/XWin.png"
-#define O_PIECE_WINNING_FILEPATH "resources/res/OWin.ong"
+#define O_PIECE_WINNING_FILEPATH "resources/res/OWin.png"
 
 #define X_PIECE 8
 #define O_PIECE 0

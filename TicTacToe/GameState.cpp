@@ -88,7 +88,11 @@ void GameState::inputHandler()
 		//Handle the "clicked sprite" event
 		else if (this->_data->input.isSpriteClicked(this->_gridSprite, sf::Mouse::Left, this->_data->window))
 		{
-			this->checkAndPlacePiece();
+			//The user can click the sprite only if the game is playing
+			if (STATE_PLAYING == _gameState)
+			{
+				this->checkAndPlacePiece();
+			}
 		}
 	}
 }
@@ -179,16 +183,107 @@ void GameState::checkAndPlacePiece()
 		if (PLAYER_PIECE == _turn)
 		{
 			_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.getTexture("XPiece"));
+			//Check if the player has won
+			this->checkPlayerHasWon(_turn);
 			_turn = AI_PIECE;
 		}
 		//If it's the AI's turn, load the O's texture
 		else if (AI_PIECE == _turn)
 		{
 			_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.getTexture("OPiece"));
+			//Check if the player has won
+			this->checkPlayerHasWon(_turn);
 			_turn = PLAYER_PIECE;
 		}
 		//Show/Make it visible again
 		_gridPieces[column - 1][row - 1].setColor(sf::Color(255, 255, 255, 255));
+	}
+}
+
+/**
+* GameState::checkPlayerHasWon
+* Checks if the player has won
+* @param int player
+* #return void
+*/
+void GameState::checkPlayerHasWon(int turn)
+{
+	checkThreePiecesForMatch(0, 0, 1, 0, 2, 0, turn);
+	checkThreePiecesForMatch(0, 1, 1, 1, 2, 1, turn);
+	checkThreePiecesForMatch(0, 2, 1, 2, 2, 2, turn);
+	checkThreePiecesForMatch(0, 0, 0, 1, 0, 2, turn);
+	checkThreePiecesForMatch(1, 0, 1, 1, 1, 2, turn);
+	checkThreePiecesForMatch(2, 0, 2, 1, 2, 2, turn);
+	checkThreePiecesForMatch(0, 0, 1, 1, 2, 2, turn);
+	checkThreePiecesForMatch(0, 2, 1, 1, 2, 0, turn);
+
+	int emptyNum = 9;
+
+	//Track empty spaces
+	for (int x = 0; x < 3; x++)
+	{
+		for (int y = 0; y < 3; y++)
+		{
+			if (EMPTY_PIECE != _gridArray[x][y])
+			{
+				emptyNum--;
+			}
+		}
+	}
+
+	//Check if the game is a draw
+	if ((emptyNum == 0) && (STATE_WON != _gameState) && (STATE_LOSE != _gameState))
+	{
+		_gameState = STATE_DRAW;
+	}
+
+	//Check if the game is over
+	if ((STATE_DRAW == _gameState) || (STATE_LOSE == _gameState) || (STATE_WON == _gameState))
+	{
+		//Show game over state
+	}
+
+	printf("%d\n",_gameState);
+}
+
+/**
+* GameState::checkThreePiecesForMatch
+* Checks if three pieces are matched horizontally, vertically or diagonally
+* @param int x1
+* @param int y1
+* @param int x2
+* @param int y2
+* @param int x3
+* @param int y3
+* @param int pieceToCheck
+* #return void
+*/
+void GameState::checkThreePiecesForMatch(int x1, int y1, int x2, int y2, int x3, int y3, int pieceToCheck)
+{
+	if ((pieceToCheck == _gridArray[x1][y1]) && (pieceToCheck == _gridArray[x2][y2]) && (pieceToCheck == _gridArray[x3][y3]))
+	{
+		std::string winningPieceStr;
+		if (O_PIECE == pieceToCheck)
+		{
+			winningPieceStr = "OWinningPiece";
+		}
+		else
+		{
+			winningPieceStr = "XWinningPiece";
+		}
+
+		_gridPieces[x1][y1].setTexture(this->_data->assets.getTexture(winningPieceStr));
+		_gridPieces[x2][y2].setTexture(this->_data->assets.getTexture(winningPieceStr));
+		_gridPieces[x3][y3].setTexture(this->_data->assets.getTexture(winningPieceStr));
+
+		if (PLAYER_PIECE == pieceToCheck)
+		{
+			_gameState = STATE_WON;
+		}
+		else
+		{
+			_gameState = STATE_LOSE;
+		}
 	}
 }
 
