@@ -19,7 +19,7 @@ private:
 	sf::Sprite _homeButton;
 	sf::Sprite _retryButton;
 
-	std::vector<std::string> _textureNames = {"RetryButton", "HomeButton"};
-	std::vector<std::string> _texturePaths = {RETRY_BUTTON, HOME_BUTTON};
+	std::vector<std::string> _textureNames = { "RetryButton", "HomeButton" };
+	std::vector<std::string> _texturePaths = { RETRY_BUTTON, HOME_BUTTON };
 };
 

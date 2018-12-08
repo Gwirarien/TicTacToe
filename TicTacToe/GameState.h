@@ -29,6 +29,6 @@ private:
 	int _turn;
 	int _gameState;
 
-	std::vector<std::string> _textureNames = {"PauseButton", "XPiece", "OPiece", "XWinningPiece", "OWinningPiece", "GridSprite"};
-	std::vector<std::string> _texturePaths = {GAME_PAUSE_BUTTON, X_PIECE_FILEPATH, O_PIECE_FILEPATH, X_PIECE_WINNING_FILEPATH, O_PIECE_WINNING_FILEPATH, GRID_SPRITE_FILEPATH};
+	std::vector<std::string> _textureNames = { "PauseButton", "XPiece", "OPiece", "XWinningPiece", "OWinningPiece", "GridSprite" };
+	std::vector<std::string> _texturePaths = { GAME_PAUSE_BUTTON, X_PIECE_FILEPATH, O_PIECE_FILEPATH, X_PIECE_WINNING_FILEPATH, O_PIECE_WINNING_FILEPATH, GRID_SPRITE_FILEPATH };
 };

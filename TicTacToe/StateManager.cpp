@@ -41,7 +41,7 @@ void StateMachine::processStateChanges()
 		this->_states.pop();
 
 		//If there are any states left
-		if(!this->_states.empty())
+		if (!this->_states.empty())
 		{
 			//Bring the state to the top of the stack
 			this->_states.top()->resumeGame();
@@ -60,7 +60,7 @@ void StateMachine::processStateChanges()
 			if (this->_isReplacing)
 			{
 				this->_states.pop();
-			} 
+			}
 			else
 			{
 				this->_states.top()->pauseGame();

@@ -2,7 +2,7 @@
 
 #include "Definitions.h"
 
-class State 
+class State
 {
 public:
 	virtual void initializeState() = 0;

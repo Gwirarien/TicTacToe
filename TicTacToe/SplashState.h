@@ -8,7 +8,7 @@ class SplashState : public State
 {
 public:
 	SplashState(GameDataRef dataRef);
-	
+
 	virtual void initializeState() override;
 	virtual void inputHandler() override;
 	virtual void update(double deltaFrames) override;

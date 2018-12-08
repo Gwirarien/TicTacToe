@@ -25,7 +25,7 @@ private:
 	std::map<std::string, sf::Font> _fonts;
 };
 
-template<typename T> 
+template<typename T>
 class AssetManagerTemplate : public AssetManager
 {
 public:
@@ -45,7 +45,7 @@ public:
 		return this->_assets.at(name);
 	}
 
-private: 
+private:
 	T _asset;
 	std::map<std::string, T> _assets;
 };

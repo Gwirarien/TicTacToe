@@ -30,7 +30,7 @@ void SplashState::initializeState()
 void SplashState::inputHandler()
 {
 	sf::Event event;
-	
+
 	while (this->_data->window.pollEvent(event))
 	{
 		//Handle the "close" event

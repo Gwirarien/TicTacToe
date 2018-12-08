@@ -9,7 +9,7 @@
 #include "StateManager.h"
 
 
-struct GameData 
+struct GameData
 {
 	StateMachine machine;
 	sf::RenderWindow window;

@@ -50,7 +50,7 @@ void GameState::initializeState()
 			continue;
 		}
 	}
-		initializeGridPieces();
+	initializeGridPieces();
 
 	//Reset grid values
 	for (int x = 0; x < 3; x++)
@@ -145,7 +145,7 @@ void GameState::checkAndPlacePiece()
 
 	int column = 0;
 	//If it's within the first column
-	if (gridLocalTouchPosition.x < gridSectionSize.x) 
+	if (gridLocalTouchPosition.x < gridSectionSize.x)
 	{
 		column = 1;
 	}
@@ -153,7 +153,7 @@ void GameState::checkAndPlacePiece()
 	else if (gridLocalTouchPosition.x < gridSectionSize.x * 2)
 	{
 		column = 2;
-	} 	
+	}
 	else if (gridLocalTouchPosition.x < gridSize.width * 2)
 	{
 		column = 3;
@@ -243,7 +243,7 @@ void GameState::checkPlayerHasWon(int turn)
 		//Show game over state
 	}
 
-	printf("%d\n",_gameState);
+	printf("%d\n", _gameState);
 }
 
 /**
