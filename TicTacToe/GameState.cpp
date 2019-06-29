@@ -3,21 +3,10 @@
 #include "PauseState.h"
 #include "GameOverState.h"
 
-/**
-* GameState::GameState
-* Constructor
-* @param GameDataRef dataRef
-*/
 GameState::GameState(GameDataRef dataRef)
 	:_data(dataRef)
-{
-}
+{}
 
-/**
-* GameState::initializeState
-* Initializes the splash state with the texture
-* #return void
-*/
 void GameState::initializeState()
 {
 	_gameState = STATE_PLAYING;
@@ -62,11 +51,6 @@ void GameState::initializeState()
 	}
 }
 
-/**
-* GameState::inputHandler
-* Handles the input
-* #return void
-*/
 void GameState::inputHandler()
 {
 	sf::Event event;
@@ -97,21 +81,10 @@ void GameState::inputHandler()
 	}
 }
 
-/**
-* GameState::update
-* Updates the splash when it's changed
-* @param double deltaFrames
-* #return void
-*/
-void GameState::update(double deltaFrames)
-{
-}
 
-/**
-* GameState::initializeGridPieces
-* Initializes the pieces of the grid
-* #return void
-*/
+void GameState::update(double deltaFrames)
+{}
+
 void GameState::initializeGridPieces()
 {
 	sf::Vector2u tempSpriteSize = this->_data->assets.getTexture("XPiece").getSize();
@@ -128,11 +101,6 @@ void GameState::initializeGridPieces()
 	}
 }
 
-/**
-* GameState::checkAndPlacePiece
-* Checks and places the pieces on the grid
-* #return void
-*/
 void GameState::checkAndPlacePiece()
 {
 	sf::Vector2i touchPoint = this->_data->input.getMousePosition(this->_data->window);
@@ -200,12 +168,6 @@ void GameState::checkAndPlacePiece()
 	}
 }
 
-/**
-* GameState::checkPlayerHasWon
-* Checks if the player has won
-* @param int player
-* #return void
-*/
 void GameState::checkPlayerHasWon(int turn)
 {
 	checkThreePiecesForMatch(0, 0, 1, 0, 2, 0, turn);
@@ -246,18 +208,6 @@ void GameState::checkPlayerHasWon(int turn)
 	printf("%d\n", _gameState);
 }
 
-/**
-* GameState::checkThreePiecesForMatch
-* Checks if three pieces are matched horizontally, vertically or diagonally
-* @param int x1
-* @param int y1
-* @param int x2
-* @param int y2
-* @param int x3
-* @param int y3
-* @param int pieceToCheck
-* #return void
-*/
 void GameState::checkThreePiecesForMatch(int x1, int y1, int x2, int y2, int x3, int y3, int pieceToCheck)
 {
 	if ((pieceToCheck == _gridArray[x1][y1]) && (pieceToCheck == _gridArray[x2][y2]) && (pieceToCheck == _gridArray[x3][y3]))
@@ -287,12 +237,6 @@ void GameState::checkThreePiecesForMatch(int x1, int y1, int x2, int y2, int x3,
 	}
 }
 
-/**
-* GameState::draw
-* Handles the drawings of the objects
-* @param double deltaFrames
-* #return void
-*/
 void GameState::draw(double deltaFrames)
 {
 	//Clear the screen

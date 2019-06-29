@@ -2,13 +2,6 @@
 #include "Game.h"
 #include "SplashState.h"
 
-/**
-* Game::Game
-* Constructor
-* @param int screenWidth
-* @param int screenHeight
-* @param std::string title
-*/
 Game::Game(int screenWidth, int screenHeight, const std::string title)
 {
 	//Creating the render window; sf::Style::Close, sf::Style::Titlebar means that 
@@ -20,11 +13,6 @@ Game::Game(int screenWidth, int screenHeight, const std::string title)
 	this->run();
 }
 
-/**
-* Game::run
-* Called when the game is running
-* #return void
-*/
 void Game::run()
 {
 	double newTime;

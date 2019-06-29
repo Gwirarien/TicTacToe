@@ -8,7 +8,6 @@
 #include "InputManager.h"
 #include "StateManager.h"
 
-
 struct GameData
 {
 	StateMachine machine;
@@ -18,7 +17,6 @@ struct GameData
 };
 
 typedef std::shared_ptr<GameData> GameDataRef;
-
 
 class Game
 {

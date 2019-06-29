@@ -1,14 +1,6 @@
 #include "stdafx.h"
 #include "AssetManager.h"
 
-/**
-* AssetManager::loadTexture
-* Loads the texture
-* @param std::string name
-* @param std::string fileName
-* @param sf::Texture *tex
-* #return void
-*/
 void AssetManager::loadTexture(const std::string name, const std::string fileName)
 {
 	if (_tex.loadFromFile(fileName))
@@ -17,25 +9,11 @@ void AssetManager::loadTexture(const std::string name, const std::string fileNam
 	}
 }
 
-/**
-* AssetManager::getTexture
-* Returns the texture
-* @param std::string name
-* #return sf::Texture
-*/
-sf::Texture &AssetManager::getTexture(const std::string name)
+sf::Texture& AssetManager::getTexture(const std::string& name)
 {
 	return this->_textures.at(name);
 }
 
-/**
-* AssetManager::loadFont
-* Loads the texture
-* @param std::string name
-* @param std::string fileName
-* @param sf::Font *font
-* #return void
-*/
 void AssetManager::loadFont(const std::string name, const std::string fileName)
 {
 	if (_font.loadFromFile(fileName))
@@ -44,13 +22,7 @@ void AssetManager::loadFont(const std::string name, const std::string fileName)
 	}
 }
 
-/**
-* AssetManager::getFont
-* Returns the font
-* @param std::string name
-* #return sf::Font
-*/
-sf::Font &AssetManager::getFont(const std::string name)
+sf::Font& AssetManager::getFont(const std::string& name)
 {
 	return this->_fonts.at(name);
 }

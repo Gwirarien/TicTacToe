@@ -1,13 +1,6 @@
 #include "stdafx.h"
 #include "StateManager.h"
 
-/**
-* StateMachine::addState
-* Adds a new state onto the stack, also replaces the old one
-* @param StateReference newState
-* @param bool isReplacing
-* #return void
-*/
 void StateMachine::addState(StateReference newState, bool isReplacing)
 {
 	this->_isAdding = true;
@@ -15,23 +8,11 @@ void StateMachine::addState(StateReference newState, bool isReplacing)
 	this->_newState = std::move(newState);
 }
 
-/**
-* StateMachine::removeState
-* Manually remove the state
-* @param none
-* #return void
-*/
 void StateMachine::removeState()
 {
 	this->_isRemoving = true;
 }
 
-/**
-* StateMachine::processStateChanges
-* Handles the changes of the state
-* @param none
-* #return void
-*/
 void StateMachine::processStateChanges()
 {
 	//If there are states and removing is set to true
@@ -74,14 +55,8 @@ void StateMachine::processStateChanges()
 	}
 }
 
-/**
-* StateMachine::processStateChanges
-* Handle the get active state method
-* @param none
-* #return StateReference
-*/
 StateReference &StateMachine::getActiveState()
 {
-	//Only the top state matter because is the active state
+	//Only the top state matters because is the active state
 	return this->_states.top();
 }

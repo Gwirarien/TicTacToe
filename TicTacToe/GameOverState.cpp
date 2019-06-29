@@ -2,21 +2,10 @@
 #include "GameOverState.h"
 #include "GameState.h"
 
-/**
-* GameOverState::GameOverState
-* Constructor
-* @param GameDataRef dataRef
-*/
 GameOverState::GameOverState(GameDataRef dataRef)
 	:_data(dataRef)
-{
-}
+{}
 
-/**
-* GameOverState::initializeState
-* Initializes the splash state with the texture
-* #return void
-*/
 void GameOverState::initializeState()
 {
 	int nSize = _textureNames.size();
@@ -46,11 +35,6 @@ void GameOverState::initializeState()
 	}
 }
 
-/**
-* GameOverState::inputHandler
-* Handles the input
-* #return void
-*/
 void GameOverState::inputHandler()
 {
 	sf::Event event;
@@ -78,22 +62,9 @@ void GameOverState::inputHandler()
 	}
 }
 
-/**
-* GameOverState::update
-* Updates the splash when it's changed
-* @param double deltaFrames
-* #return void
-*/
 void GameOverState::update(double deltaFrames)
-{
-}
+{}
 
-/**
-* GameOverState::draw
-* Handles the drawings of the objects
-* @param double deltaFrames
-* #return void
-*/
 void GameOverState::draw(double deltaFrames)
 {
 	//Clear the screen

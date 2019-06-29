@@ -1,15 +1,7 @@
 #include "stdafx.h"
 #include "InputManager.h"
 
-/**
-* InputManager::isSpriteClicked
-* Check if a sprite is clicked
-* @param sf::Sprite object
-* @param sf::Mouse::Button button
-* @param sf::RenderWindow & window
-* #return bool
-*/
-bool InputManager::isSpriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow &window)
+bool InputManager::isSpriteClicked(const sf::Sprite& object, const sf::Mouse::Button& button, const sf::RenderWindow& window) const
 {
 	if (sf::Mouse::isButtonPressed(button))
 	{
@@ -24,13 +16,7 @@ bool InputManager::isSpriteClicked(sf::Sprite object, sf::Mouse::Button button, 
 	return false;
 }
 
-/**
-* InputManager::getMousePosition
-* Gets the mouse position
-* @param sf::RenderWindow & window
-* #return sf::Vector2i
-*/
-sf::Vector2i InputManager::getMousePosition(sf::RenderWindow &window)
+sf::Vector2i InputManager::getMousePosition(const sf::RenderWindow& window) const
 {
 	return sf::Mouse::getPosition(window);
 }

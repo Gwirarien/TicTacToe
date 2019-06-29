@@ -1,21 +1,10 @@
 #include "stdafx.h"
 #include "PauseState.h"
 
-/**
-* PauseState::PauseState
-* Constructor
-* @param GameDataRef dataRef
-*/
 PauseState::PauseState(GameDataRef dataRef)
 	:_data(dataRef)
-{
-}
+{}
 
-/**
-* PauseState::initializeState
-* Initializes the splash state with the texture
-* #return void
-*/
 void PauseState::initializeState()
 {
 	int nSize = _textureNames.size();
@@ -52,11 +41,6 @@ void PauseState::initializeState()
 	}
 }
 
-/**
-* PauseState::inputHandler
-* Handles the input
-* #return void
-*/
 void PauseState::inputHandler()
 {
 	sf::Event event;
@@ -86,22 +70,9 @@ void PauseState::inputHandler()
 	}
 }
 
-/**
-* PauseState::update
-* Updates the splash when it's changed
-* @param double deltaFrames
-* #return void
-*/
 void PauseState::update(double deltaFrames)
-{
-}
+{}
 
-/**
-* PauseState::draw
-* Handles the drawings of the objects
-* @param double deltaFrames
-* #return void
-*/
 void PauseState::draw(double deltaFrames)
 {
 	//Clear the screen

@@ -19,9 +19,9 @@ public:
 	StateReference &getActiveState();
 
 private:
-	bool _isRemoving;
-	bool _isAdding;
-	bool _isReplacing;
+	bool _isRemoving = false;
+	bool _isAdding = false;
+	bool _isReplacing = false;
 	std::stack<StateReference> _states;
 	StateReference _newState;
 };

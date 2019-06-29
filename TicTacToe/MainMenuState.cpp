@@ -2,21 +2,10 @@
 #include "MainMenuState.h"
 #include "GameState.h"
 
-/**
-* MainMenuState::MainMenuState
-* Constructor
-* @param GameDataRef dataRef
-*/
 MainMenuState::MainMenuState(GameDataRef dataRef)
 	:_data(dataRef)
-{
-}
+{}
 
-/**
-* MainMenuState::initializeState
-* Initializes the splash state with the texture
-* #return void
-*/
 void MainMenuState::initializeState()
 {
 	int nSize = _textureNames.size();
@@ -63,11 +52,6 @@ void MainMenuState::initializeState()
 	}
 }
 
-/**
-* MainMenuState::inputHandler
-* Handles the input
-* #return void
-*/
 void MainMenuState::inputHandler()
 {
 	sf::Event event;
@@ -88,22 +72,9 @@ void MainMenuState::inputHandler()
 	}
 }
 
-/**
-* MainMenuState::update
-* Updates the splash when it's changed
-* @param double deltaFrames
-* #return void
-*/
 void MainMenuState::update(double deltaFrames)
-{
-}
+{}
 
-/**
-* MainMenuState::draw
-* Handles the drawings of the objects
-* @param double deltaFrames
-* #return void
-*/
 void MainMenuState::draw(double deltaFrames)
 {
 	//Clear the screen
