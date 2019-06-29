@@ -9,9 +9,9 @@ void AssetManager::loadTexture(const std::string name, const std::string fileNam
 	}
 }
 
-sf::Texture& AssetManager::getTexture(const std::string& name)
+sf::Texture& AssetManager::getTexture(const std::string& name) const
 {
-	return this->_textures.at(name);
+	return const_cast<AssetManager*>(this)->_textures.at(name);
 }
 
 void AssetManager::loadFont(const std::string name, const std::string fileName)
@@ -22,7 +22,8 @@ void AssetManager::loadFont(const std::string name, const std::string fileName)
 	}
 }
 
-sf::Font& AssetManager::getFont(const std::string& name)
+sf::Font& AssetManager::getFont(const std::string& name) const
 {
-	return this->_fonts.at(name);
+	return const_cast<AssetManager*>(this)->_fonts.at(name);
 }
+

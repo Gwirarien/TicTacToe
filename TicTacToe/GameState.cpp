@@ -21,9 +21,7 @@ void GameState::initializeState()
 
 		if (_textureNames[i] == "PauseButton")
 		{
-			//Set the texture
 			_pauseButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
-			//Position the button
 			_pauseButton.setPosition(this->_data->window.getSize().x - _pauseButton.getGlobalBounds().width,
 				_pauseButton.getPosition().y);
 			continue;
@@ -31,9 +29,7 @@ void GameState::initializeState()
 
 		if (_textureNames[i] == "GridSprite")
 		{
-			//Set the texture
 			_gridSprite.setTexture(this->_data->assets.getTexture(_textureNames[i]));
-			//Position the button
 			_gridSprite.setPosition((SCREEN_WIDTH / 2) - (_gridSprite.getGlobalBounds().width / 2),
 				(SCREEN_HEIGHT / 2) - (_gridSprite.getGlobalBounds().height / 2));
 			continue;
@@ -143,7 +139,6 @@ void GameState::checkAndPlacePiece()
 		row = 3;
 	}
 
-	//Check if it's an empty space
 	if (_gridArray[column - 1][row - 1] == EMPTY_PIECE)
 	{
 		_gridArray[column - 1][row - 1] = _turn;
@@ -151,7 +146,6 @@ void GameState::checkAndPlacePiece()
 		if (PLAYER_PIECE == _turn)
 		{
 			_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.getTexture("XPiece"));
-			//Check if the player has won
 			this->checkPlayerHasWon(_turn);
 			_turn = AI_PIECE;
 		}
@@ -159,7 +153,6 @@ void GameState::checkAndPlacePiece()
 		else if (AI_PIECE == _turn)
 		{
 			_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.getTexture("OPiece"));
-			//Check if the player has won
 			this->checkPlayerHasWon(_turn);
 			_turn = PLAYER_PIECE;
 		}
@@ -239,9 +232,8 @@ void GameState::checkThreePiecesForMatch(int x1, int y1, int x2, int y2, int x3,
 
 void GameState::draw(double deltaFrames)
 {
-	//Clear the screen
+
 	this->_data->window.clear(sf::Color::Red);
-	//Set the background and button
 	this->_data->window.draw(this->_background);
 	this->_data->window.draw(this->_pauseButton);
 	this->_data->window.draw(this->_gridSprite);
@@ -254,6 +246,5 @@ void GameState::draw(double deltaFrames)
 		}
 	}
 
-	//Display the changes
 	this->_data->window.display();
 }

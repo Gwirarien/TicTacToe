@@ -15,9 +15,7 @@ void GameOverState::initializeState()
 
 		if (_textureNames[i] == "RetryButton")
 		{
-			//Set the texture
 			_retryButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
-			//Position the button
 			this->_retryButton.setPosition((this->_data->window.getSize().x / 2) - (this->_retryButton.getLocalBounds().width / 2),
 				(this->_data->window.getSize().y / 3) - (this->_retryButton.getLocalBounds().height / 2));
 			continue;
@@ -25,9 +23,7 @@ void GameOverState::initializeState()
 
 		if (_textureNames[i] == "HomeButton")
 		{
-			//Set the texture
 			_homeButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
-			//Position the button
 			this->_homeButton.setPosition((this->_data->window.getSize().x / 2) - (this->_homeButton.getLocalBounds().width / 2),
 				(this->_data->window.getSize().y / 3 * 2) - (this->_homeButton.getLocalBounds().height / 2));
 			continue;
@@ -67,11 +63,8 @@ void GameOverState::update(double deltaFrames)
 
 void GameOverState::draw(double deltaFrames)
 {
-	//Clear the screen
 	this->_data->window.clear(sf::Color::Blue);
-	//Set the buttons
 	this->_data->window.draw(this->_retryButton);
 	this->_data->window.draw(this->_homeButton);
-	//Display the changes
 	this->_data->window.display();
 }

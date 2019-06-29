@@ -14,16 +14,13 @@ void PauseState::initializeState()
 
 		if (_textureNames[i] == "PauseBackground")
 		{
-			//Set the texture
 			_background.setTexture(this->_data->assets.getTexture(_textureNames[i]));
 			continue;
 		}
 
 		if (_textureNames[i] == "ResumeButton")
 		{
-			//Set the texture
 			_resumeButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
-			//Position the button
 			this->_resumeButton.setPosition((this->_data->window.getSize().x / 2) - (this->_resumeButton.getLocalBounds().width / 2),
 				(this->_data->window.getSize().y / 3) - (this->_resumeButton.getLocalBounds().height / 2));
 			continue;
@@ -31,9 +28,7 @@ void PauseState::initializeState()
 
 		if (_textureNames[i] == "HomeButton")
 		{
-			//Set the texture
 			_homeButton.setTexture(this->_data->assets.getTexture(_textureNames[i]));
-			//Position the button
 			this->_homeButton.setPosition((this->_data->window.getSize().x / 2) - (this->_homeButton.getLocalBounds().width / 2),
 				(this->_data->window.getSize().y / 3 * 2) - (this->_homeButton.getLocalBounds().height / 2));
 			continue;
@@ -75,12 +70,9 @@ void PauseState::update(double deltaFrames)
 
 void PauseState::draw(double deltaFrames)
 {
-	//Clear the screen
 	this->_data->window.clear(sf::Color::Red);
-	//Set the background and buttons
 	this->_data->window.draw(this->_background);
 	this->_data->window.draw(this->_resumeButton);
 	this->_data->window.draw(this->_homeButton);
-	//Display the changes
 	this->_data->window.display();
 }

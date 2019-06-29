@@ -12,7 +12,7 @@ struct GameData
 {
 	StateMachine machine;
 	sf::RenderWindow window;
-	AssetManagerTemplate<AssetManager> assets;
+	AssetManager assets;
 	InputManager input;
 };
 
